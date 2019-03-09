@@ -19,7 +19,7 @@ Docma.create()
 		],
 		dest: './docs',
 		jsdoc: {
-			plugins: ['jsdoc-dynamic'],
+			plugins: ['jsdoc-dynamic', 'plugins/markdown'],
 		},
 		template: {
 			options: {
