@@ -1,9 +1,6 @@
 const LetsChat = require('../');
 
-const client = new LetsChat.Client({
-    url: 'https://devchat.dmrail.games/',
-    token: 'no-token-4-u',
-});
+const client = new LetsChat.Client(require('./config'));
 
 client.once('ready', () => {
     console.log('ready!');
