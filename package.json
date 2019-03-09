@@ -1,6 +1,6 @@
 {
 	"name": "letschat.js",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A bot library for SDElements' Let's Chat",
 	"main": "src/index.js",
 	"repository": "git@git.railrunner16.me:RailRunner16/letschat.js.git",
