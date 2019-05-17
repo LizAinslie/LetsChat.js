@@ -59,38 +59,38 @@ class Client extends EventEmitter {
 	
 	events() {
 		this.io.on('connect', () => {
-			// Only for development, comment out before publishing
-			var oldOnevent = this.io.onevent
-			this.io.onevent = function (packet) {
-				if (packet.data) {
-					console.log('>>>', {name: packet.data[0], payload: packet.data[1]})
-				}
-				oldOnevent.apply(this.io, arguments)
-			}
-			
 			this.rest.methods.getRooms().then(rooms => {
 				for (const room of rooms) this.io.emit('rooms:join', room.id, connectedRoom => {
 					this.rooms.set(room.id, new Room(room));
 				});
-			
+
 				this.emit('ready');
 			});
 		});
-		
+
 		this.io.on('messages:new', msg => {
 			const message = new Message(msg, this);
-			
+
 			this.emit('message_create', message);
 		});
-		
+
 		this.io.on('rooms:new', room => {
-			room = new Room(room);
-			
+			room = new Room(room, this);
+
 			this.io.emit('rooms:join', room.id, connectedRoom => {
 				this.rooms.set(room.id, room);
-				
-				this.emit('room_create', connectedRoom);
+
+				this.emit('room_create', room);
 			});
+		});
+
+		this.io.on('rooms:update', room => {
+			const newRoom = new Room(room, this);
+			const oldRoom = this.rooms.get(room.id);
+			
+			this.rooms.set(room.id, newRoom);
+
+			this.emit('room_update', newRoom, oldRoom);
 		});
 	}
 }

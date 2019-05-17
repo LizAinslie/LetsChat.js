@@ -17,7 +17,11 @@ class RestMethods {
     }
     
     getRoom(id) {
-        return this.rest.makeRequest('get', `room/${id}`);
+        return this.rest.makeRequest('get', `rooms/${id}`);
+    }
+    
+    getFiles(roomId) {
+        return this.rest.makeRequest('get', `rooms/${roomId}/files`);
     }
 }
 
