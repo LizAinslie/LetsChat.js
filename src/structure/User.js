@@ -2,7 +2,7 @@
  * An internal class that represents a Let's Chat user
  */
 class User {
-    /**
+	/**
      * Create a new user object
      * @param {Object} data The user data to initialise the user object with
      * @param {string} data.id The room ID

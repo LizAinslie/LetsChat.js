@@ -8,7 +8,8 @@
 	"license": "MIT",
 	"private": false,
 	"scripts": {
-		"docs": "gulp doc"
+		"docs": "gulp doc",
+		"lint": "eslint src --fix"
 	},
 	"dependencies": {
 		"@braintree/sanitize-url": "^3.0.0",
@@ -17,6 +18,7 @@
 	},
 	"devDependencies": {
 		"docma": "^3.2.2",
+		"eslint": "^5.16.0",
 		"foodoc": "^0.0.9",
 		"jsdoc": "^3.5.5",
 		"jsdoc-dynamic": "^1.0.4"
